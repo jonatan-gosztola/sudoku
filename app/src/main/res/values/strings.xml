@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Sudoku</string>
+
+    <string name="main_screen_title">Sudoku</string>
+    <string name="main_screen_new_game">New Game</string>
+    <string name="main_screen_exit">Exit</string>
+
+    <string name="difficulty_selector_screen_title">Select difficulty</string>
+    <string name="difficulty_selector_screen_easy">Easy</string>
+    <string name="difficulty_selector_screen_medium">Medium</string>
+    <string name="difficulty_selector_screen_hard">Hard</string>
+
+    <!-- region general -->
+
+    <string name="back_button">Back</string>
+
+    <!-- endregion -->
+
+</resources>
