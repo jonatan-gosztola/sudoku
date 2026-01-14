@@ -10,6 +10,15 @@
     <string name="difficulty_selector_screen_medium">Medium</string>
     <string name="difficulty_selector_screen_hard">Hard</string>
 
+    <!-- region game screen -->
+
+    <string name="game_screen_hint">Hint</string>
+    <string name="game_screen_done_solved">Puzzle solved!</string>
+    <string name="game_screen_done_great_job">Great job!</string>
+    <string name="game_screen_back_to_main_menu_button">Back to main menu</string>
+
+    <!-- endregion -->
+
     <!-- region general -->
 
     <string name="back_button">Back</string>
