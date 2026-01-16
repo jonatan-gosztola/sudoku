@@ -27,7 +27,7 @@ import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import hu.csoniworks.sudoku.R
-import hu.csoniworks.sudoku.domain.Cell
+import hu.csoniworks.sudoku.domain.sudokuengine.Cell
 import hu.csoniworks.sudoku.ui.GameViewModel
 import hu.csoniworks.sudoku.ui.components.SudokuInput
 import hu.csoniworks.sudoku.ui.components.SudokuTable

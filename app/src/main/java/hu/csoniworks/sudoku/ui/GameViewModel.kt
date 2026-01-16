@@ -3,8 +3,8 @@ package hu.csoniworks.sudoku.ui
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import hu.csoniworks.sudoku.domain.Cell
-import hu.csoniworks.sudoku.domain.SudokuEngine
+import hu.csoniworks.sudoku.domain.sudokuengine.Cell
+import hu.csoniworks.sudoku.domain.sudokuengine.SudokuEngine
 import hu.csoniworks.sudoku.ui.model.GameScreenUiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -15,8 +15,7 @@ import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
-class GameViewModel : ViewModel() {
-
+class GameViewModel() : ViewModel() {
     private val engine = SudokuEngine(SudokuEngine.Size.Normal)
 
     private val _selectedCell: MutableStateFlow<Pair<Int, Int>?> = MutableStateFlow(null)

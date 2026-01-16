@@ -12,7 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import hu.csoniworks.sudoku.domain.Cell
+import hu.csoniworks.sudoku.domain.sudokuengine.Cell
 import hu.csoniworks.sudoku.ui.theme.SudokuTheme
 
 @Composable

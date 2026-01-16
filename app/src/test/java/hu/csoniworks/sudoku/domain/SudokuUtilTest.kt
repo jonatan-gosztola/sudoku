@@ -1,9 +1,11 @@
 package hu.csoniworks.sudoku.domain
 
-import hu.csoniworks.sudoku.domain.SudokuSolutionGenerator.getColumn
-import hu.csoniworks.sudoku.domain.SudokuSolutionGenerator.getGroup
-import hu.csoniworks.sudoku.domain.SudokuSolutionGenerator.getRow
-import hu.csoniworks.sudoku.domain.SudokuSolutionGenerator.isValid
+import hu.csoniworks.sudoku.domain.sudokuengine.calc.SudokuSolutionGenerator.getColumn
+import hu.csoniworks.sudoku.domain.sudokuengine.calc.SudokuSolutionGenerator.getGroup
+import hu.csoniworks.sudoku.domain.sudokuengine.calc.SudokuSolutionGenerator.getRow
+import hu.csoniworks.sudoku.domain.sudokuengine.calc.SudokuSolutionGenerator.isValid
+import hu.csoniworks.sudoku.domain.sudokuengine.calc.EasySudokuPuzzleGenerator
+import hu.csoniworks.sudoku.domain.sudokuengine.calc.SudokuSolutionGenerator
 import org.junit.Test
 
 class SudokuUtilTest {

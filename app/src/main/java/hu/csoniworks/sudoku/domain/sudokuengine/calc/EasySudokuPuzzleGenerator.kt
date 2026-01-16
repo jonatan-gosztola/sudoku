@@ -1,8 +1,4 @@
-package hu.csoniworks.sudoku.domain
-
-import hu.csoniworks.sudoku.domain.SudokuCalculationsUtil.copyGrid
-import hu.csoniworks.sudoku.domain.SudokuCalculationsUtil.isComplete
-import hu.csoniworks.sudoku.domain.SudokuCalculationsUtil.isValid
+package hu.csoniworks.sudoku.domain.sudokuengine.calc
 
 /**
  * EASY Sudoku generator
@@ -25,7 +21,7 @@ class EasySudokuPuzzleGenerator(
         emptyCellLimit: Int = 81,
     ): List<List<Int?>> {
 
-        val puzzle = copyGrid(solution)
+        val puzzle = SudokuCalculationsUtil.copyGrid(solution)
 
         // shuffle cells
         val cellIndexes = mutableListOf<Pair<Int, Int>>()
@@ -72,7 +68,7 @@ class EasySudokuPuzzleGenerator(
     private fun hasUniqueSolution(
         grid: List<List<Int?>>
     ): Boolean {
-        val work = copyGrid(grid)
+        val work = SudokuCalculationsUtil.copyGrid(grid)
         return countSolutions(work, limit = 2) == 1
     }
 
@@ -88,7 +84,7 @@ class EasySudokuPuzzleGenerator(
                 if (grid[row][col] == null) {
                     var count = 0
                     for (number in 1..size) {
-                        if (isValid(grid, row, col, number)) {
+                        if (SudokuCalculationsUtil.isValid(grid, row, col, number)) {
                             grid[row][col] = number
                             count += countSolutions(grid, limit)
                             if (count >= limit) {
@@ -113,7 +109,7 @@ class EasySudokuPuzzleGenerator(
     private fun isEasySolvable(
         grid: List<List<Int?>>
     ): Boolean {
-        val work = copyGrid(grid)
+        val work = SudokuCalculationsUtil.copyGrid(grid)
 
         while (true) {
             var progress = false
@@ -123,7 +119,7 @@ class EasySudokuPuzzleGenerator(
                 for (col in 0 until size) {
                     if (work[row][col] == null) {
                         val candidates = (1..size).filter {
-                            isValid(work, row, col, it)
+                            SudokuCalculationsUtil.isValid(work, row, col, it)
                         }
                         if (candidates.size == 1) {
                             work[row][col] = candidates.first()
@@ -141,7 +137,12 @@ class EasySudokuPuzzleGenerator(
                 // Rows
                 for (row in 0 until size) {
                     val spots = (0 until size).filter { column ->
-                        work[row][column] == null && isValid(work, row, column, number)
+                        work[row][column] == null && SudokuCalculationsUtil.isValid(
+                            work,
+                            row,
+                            column,
+                            number
+                        )
                     }
                     if (spots.size == 1) {
                         work[row][spots.first()] = number
@@ -152,7 +153,12 @@ class EasySudokuPuzzleGenerator(
                 // Columns
                 for (column in 0 until size) {
                     val spots = (0 until size).filter { row ->
-                        work[row][column] == null && isValid(work, row, column, number)
+                        work[row][column] == null && SudokuCalculationsUtil.isValid(
+                            work,
+                            row,
+                            column,
+                            number
+                        )
                     }
                     if (spots.size == 1) {
                         work[spots.first()][column] = number
@@ -169,7 +175,13 @@ class EasySudokuPuzzleGenerator(
                         val spots = mutableListOf<Pair<Int, Int>>()
                         for (row in rowGroup * 3 until rowGroup * 3 + 3)
                             for (column in columnGroup * 3 until columnGroup * 3 + 3)
-                                if (work[row][column] == null && isValid(work, row, column, number))
+                                if (work[row][column] == null && SudokuCalculationsUtil.isValid(
+                                        work,
+                                        row,
+                                        column,
+                                        number
+                                    )
+                                )
                                     spots += row to column
 
                         if (spots.size == 1) {
@@ -187,11 +199,11 @@ class EasySudokuPuzzleGenerator(
 
         // work grid is now filled with naked single and hidden single techniques.
         // If there's any empty cell, it cannot be solved with that two techniques.
-        return isComplete(work)
+        return SudokuCalculationsUtil.isComplete(work)
     }
 
     fun getHint(grid: List<List<Int?>>): Pair<Int, Int> {
-        val work = copyGrid(grid)
+        val work = SudokuCalculationsUtil.copyGrid(grid)
 
         // get empty cells
         // iterate

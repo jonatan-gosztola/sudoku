@@ -1,7 +1,9 @@
-package hu.csoniworks.sudoku.domain
+package hu.csoniworks.sudoku.domain.sudokuengine
 
-import hu.csoniworks.sudoku.domain.Cell.Companion.toFixedCell
-import hu.csoniworks.sudoku.domain.SudokuCalculationsUtil.isGridValid
+import hu.csoniworks.sudoku.domain.sudokuengine.Cell.Companion.toFixedCell
+import hu.csoniworks.sudoku.domain.sudokuengine.calc.EasySudokuPuzzleGenerator
+import hu.csoniworks.sudoku.domain.sudokuengine.calc.SudokuCalculationsUtil.isGridValid
+import hu.csoniworks.sudoku.domain.sudokuengine.calc.SudokuSolutionGenerator
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -9,11 +11,12 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.withContext
 
 class SudokuEngine(
-    val size: Size = Size.Normal
-) {
+    val size: Size = Size.Medium
+): SudokuEngineInterface {
 
     enum class Size(val value: Int) {
         Small(3),
+        Medium(6),
         Normal(value = 9)
     }
 
@@ -26,9 +29,9 @@ class SudokuEngine(
         }
     )
 
-    val table: StateFlow<List<List<Cell>>> = _table.asStateFlow()
+    override val table: StateFlow<List<List<Cell>>> = _table.asStateFlow()
 
-    suspend fun generateTable() {
+    override suspend fun generateTable() {
         withContext(Dispatchers.Default) {
 
             val solution = solutionGenerator
@@ -50,7 +53,7 @@ class SudokuEngine(
         TODO()
     }
 
-    suspend fun fillCell(row: Int, col: Int, number: Int) {
+    override suspend fun fillCell(row: Int, col: Int, number: Int) {
         withContext(Dispatchers.Default) {
             val copy = _table.value.map { it.toMutableList() }.toMutableList()
 
@@ -60,11 +63,11 @@ class SudokuEngine(
         }
     }
 
-    suspend fun isCompleted(): Boolean = withContext(Dispatchers.Default) {
+    override suspend fun isCompleted(): Boolean = withContext(Dispatchers.Default) {
         _table.value.isComplete()
     }
 
-    suspend fun isCompletionValid(): Boolean = withContext(Dispatchers.Default) {
+    override suspend fun isCompletionValid(): Boolean = withContext(Dispatchers.Default) {
         _table.value.map { rows ->
             rows.map { cell -> cell.number }
         }.isGridValid()
@@ -76,5 +79,4 @@ class SudokuEngine(
                 cell.number != null
             }
         }
-
 }

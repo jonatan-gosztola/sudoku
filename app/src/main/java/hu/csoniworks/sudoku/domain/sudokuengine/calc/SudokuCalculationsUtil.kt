@@ -1,9 +1,9 @@
-package hu.csoniworks.sudoku.domain
+package hu.csoniworks.sudoku.domain.sudokuengine.calc
 
-import hu.csoniworks.sudoku.domain.SudokuSolutionGenerator.Companion.getColumn
-import hu.csoniworks.sudoku.domain.SudokuSolutionGenerator.Companion.getGroup
-import hu.csoniworks.sudoku.domain.SudokuSolutionGenerator.Companion.getRow
-import hu.csoniworks.sudoku.domain.SudokuSolutionGenerator.Companion.isValid
+import hu.csoniworks.sudoku.domain.sudokuengine.calc.SudokuSolutionGenerator.Companion.getColumn
+import hu.csoniworks.sudoku.domain.sudokuengine.calc.SudokuSolutionGenerator.Companion.getGroup
+import hu.csoniworks.sudoku.domain.sudokuengine.calc.SudokuSolutionGenerator.Companion.getRow
+import hu.csoniworks.sudoku.domain.sudokuengine.calc.SudokuSolutionGenerator.Companion.isValid
 
 object SudokuCalculationsUtil {
 

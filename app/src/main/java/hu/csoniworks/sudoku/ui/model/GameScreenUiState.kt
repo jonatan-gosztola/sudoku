@@ -1,6 +1,6 @@
 package hu.csoniworks.sudoku.ui.model
 
-import hu.csoniworks.sudoku.domain.Cell
+import hu.csoniworks.sudoku.domain.sudokuengine.Cell
 
 data class GameScreenUiState(
     val grid: List<List<Cell>>,

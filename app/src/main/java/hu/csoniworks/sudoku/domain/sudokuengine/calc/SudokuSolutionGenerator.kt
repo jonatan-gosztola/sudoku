@@ -1,6 +1,4 @@
-package hu.csoniworks.sudoku.domain
-
-import hu.csoniworks.sudoku.domain.SudokuCalculationsUtil.isValid
+package hu.csoniworks.sudoku.domain.sudokuengine.calc
 
 class SudokuSolutionGenerator(
     val size: Int = 9
@@ -24,7 +22,7 @@ class SudokuSolutionGenerator(
                     val numbers = (1..9).shuffled()
 
                     for (n in numbers) {
-                        if (isValid(this, row, col, n)) {
+                        if (SudokuCalculationsUtil.isValid(this, row, col, n)) {
                             this[row][col] = n
 
                             if (this.generateSudoku()) {

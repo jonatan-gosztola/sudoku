@@ -18,7 +18,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import hu.csoniworks.sudoku.domain.Cell
+import hu.csoniworks.sudoku.domain.sudokuengine.Cell
 import hu.csoniworks.sudoku.ui.theme.SudokuTheme
 
 @Composable

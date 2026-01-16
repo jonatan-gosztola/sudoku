@@ -1,4 +1,4 @@
-package hu.csoniworks.sudoku.domain
+package hu.csoniworks.sudoku.domain.sudokuengine
 
 sealed class Cell(open val number: Int?) {
     data class Fixed(override val number: Int) : Cell(number)
